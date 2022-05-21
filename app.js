@@ -51,13 +51,11 @@ artista.addEventListener('submit',async (e)=> {
     const whiteSpaces = /  +/g;
     const artist = input.value.trim().replace(whiteSpaces,'+');
     tracks = await getArtistTopTracks(artist);
-    getArtistInfo(artist)
-    console.log(tracks)
     labels = tracks.map(track => track.name);
     data = tracks.map(track => track.popularity);
     addData(chart,labels,data)
     chart.update();
-    
+    createArtistCard(artist).then();
 })
 
 
@@ -77,8 +75,17 @@ function removeData(chart) {
     chart.update();
 }
 
-function createArtistCard(){
-
-    const img = document.createElement('img');
-
+async function createArtistCard(name){
+    const info = await getArtistInfo(name);
+    const genres = info.genres.join();
+   
+    
+    artistInfo.innerHTML = `<img src="${info.image.url}"/>
+                            <div class="artist">
+                                <h2>${info.name}</h2>
+                                <h3>Generos: ${genres}</h3>
+                                <p>Followers: ${info.followers}</p>
+                            </div>
+    
+    `
 }

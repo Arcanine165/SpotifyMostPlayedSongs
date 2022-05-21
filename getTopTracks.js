@@ -62,7 +62,6 @@ export const getArtistInfo = async (name) => {
         genres: response.genres,
         followers: response.followers.total
     }
-    console.log(info)
-    console.log(response)
+    return info;
     
 }
