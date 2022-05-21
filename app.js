@@ -3,9 +3,11 @@ import { getArtistTopTracks,getArtistInfo } from "./getTopTracks.js";
 const artista = document.querySelector('#form');
 const input = document.querySelector('#buscar');
 const ctx = document.getElementById('myCanvas').getContext('2d');
+const artistInfo = document.getElementById('artistInfo');
 let tracks;
 let data  = [];
 let labels = [];
+
 let chart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -49,7 +51,7 @@ artista.addEventListener('submit',async (e)=> {
     const whiteSpaces = /  +/g;
     const artist = input.value.trim().replace(whiteSpaces,'+');
     tracks = await getArtistTopTracks(artist);
-    
+    getArtistInfo(artist)
     console.log(tracks)
     labels = tracks.map(track => track.name);
     data = tracks.map(track => track.popularity);
@@ -76,5 +78,7 @@ function removeData(chart) {
 }
 
 function createArtistCard(){
-    
+
+    const img = document.createElement('img');
+
 }

@@ -56,5 +56,13 @@ export const getArtistInfo = async (name) => {
         headers:{'Authorization': 'Bearer ' + token}
         })
     const response = await result.json();
+    const info = {
+        name:response.name,
+        image: response?.images[0],
+        genres: response.genres,
+        followers: response.followers.total
+    }
+    console.log(info)
     console.log(response)
+    
 }
