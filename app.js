@@ -5,6 +5,8 @@ const artista = document.querySelector('#form');
 const input = document.querySelector('#buscar');
 const ctx = document.getElementById('myCanvas').getContext('2d');
 const artistInfo = document.getElementById('artistInfo');
+const myChart = document.querySelector('#chart');
+
 let tracks;
 let data  = [];
 let labels = [];
@@ -12,7 +14,7 @@ let labels = [];
 let chart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: labels,
+        labels: labels, 
         datasets: [{
             label: 'Popularity',
             data: data,
@@ -40,21 +42,26 @@ let chart = new Chart(ctx, {
         maintainAspectRatio: true,
         scales: {
             y: {
-                beginAtZero: true
+                beginAtZero: true,
+                ticks:{
+                    color: 'white', beginAtZero: true 
+                }
             },
             x:{
                 ticks:{
                     callback: function(value){
                         const valueLegend = this.getLabelForValue(value);
                         return valueLegend.substring(0,10) + '...'
-                    }
+                    },
+                    color: 'white', beginAtZero: true 
                 }
             }
             
         },
         plugins:{
             legend: {
-             display: true
+             display: true,
+             color:'white'
             }
            }
     }
@@ -62,6 +69,8 @@ let chart = new Chart(ctx, {
 
 artista.addEventListener('submit',async (e)=> {
     e.preventDefault();
+    myChart.classList.remove('none');
+    myChart.classList.add('visible');
     removeData(chart)
     const whiteSpaces = /  +/g;
     const artist = input.value.trim().replace(whiteSpaces,'+');

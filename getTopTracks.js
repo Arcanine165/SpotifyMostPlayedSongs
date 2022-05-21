@@ -2,7 +2,7 @@
 
 const fetchApi = async() => {
     const clientId = '18602e9d04a0426da087afbddbbbb265'
-    const clientSecret = 'a7b2f4b4d0dc4d1ba64e1139434bbcb2' //No supe como esconderla en gitHub pages please, no abusar :c
+    const clientSecret = 'a7b2f4b4d0dc4d1ba64e1139434bbcb2' //No supe como esconderla en gitHub pages please, no abusar :c//
     
     const result = await fetch('https://accounts.spotify.com/api/token',{
         method:'POST',

@@ -122,3 +122,10 @@ input{
         font-size: 10px;
     }
 }
+
+.none{
+    visibility: hidden;
+}
+.visible{
+    visibility:visible;
+}
