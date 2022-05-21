@@ -1,4 +1,5 @@
 import { getArtistTopTracks,getArtistInfo } from "./getTopTracks.js";
+import { commafy } from "./helpers/commify.js";
 
 const artista = document.querySelector('#form');
 const input = document.querySelector('#buscar');
@@ -40,8 +41,22 @@ let chart = new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true
+            },
+            x:{
+                ticks:{
+                    callback: function(value){
+                        const valueLegend = this.getLabelForValue(value);
+                        return valueLegend.substring(0,10) + '...'
+                    }
+                }
             }
-        }
+            
+        },
+        plugins:{
+            legend: {
+             display: true
+            }
+           }
     }
 });
 
@@ -78,13 +93,15 @@ function removeData(chart) {
 async function createArtistCard(name){
     const info = await getArtistInfo(name);
     const genres = info.genres.join();
+    const followers = commafy(info.followers)
     artistInfo.classList.add('artistInfo')
     
     artistInfo.innerHTML = `<img src="${info.image.url}"/>
                             <div class="artist">
                                 <h2>${info.name}</h2>
                                 <h3>Generos: ${genres}</h3>
-                                <p>Followers: ${info.followers}</p>
+                                <p>Followers: ${followers}</p>
+                                <a target="_blank" href="${info.externalUrl}" class="btn btn-success">Escuchar en spotify!</a>
                             </div>
     
     `

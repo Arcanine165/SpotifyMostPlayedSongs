@@ -60,8 +60,11 @@ export const getArtistInfo = async (name) => {
         name:response.name,
         image: response?.images[0],
         genres: response.genres,
-        followers: response.followers.total
+        followers: response.followers.total,
+        externalUrl:response.external_urls.spotify
     }
+    console.log(response)
+    console.log(info)
     return info;
     
 }

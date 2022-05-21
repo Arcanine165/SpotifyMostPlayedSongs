@@ -24,7 +24,7 @@ html, body{
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #53A6BB;
+    background-color: #80C7FF;
     box-shadow: 4px 5px 3px 1px rgba(0, 0, 0, .5);
     
 }
@@ -66,7 +66,7 @@ input{
 .footer{
     padding: 10px;
     margin: 0;
-    background-color: #58D0EE;
+    background-color: #80C7FF;
     text-align: center;
     margin-top: auto;
 }
@@ -84,8 +84,8 @@ input{
     justify-content: space-evenly;
     margin-top: 20px;
     margin-bottom: 20px;
-    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+    -webkit-box-shadow: -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 .artistInfo>img{
     max-width: 300px;
@@ -117,5 +117,8 @@ input{
         justify-content: center;
         align-items: center;
         font-size: 10px !important;
+    }
+    .btn{
+        font-size: 10px;
     }
 }
