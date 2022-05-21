@@ -78,7 +78,7 @@ function removeData(chart) {
 async function createArtistCard(name){
     const info = await getArtistInfo(name);
     const genres = info.genres.join();
-   
+    artistInfo.classList.add('artistInfo')
     
     artistInfo.innerHTML = `<img src="${info.image.url}"/>
                             <div class="artist">
