@@ -68,6 +68,8 @@ let chart = new Chart(ctx, {
 });
 
 artista.addEventListener('submit',async (e)=> {
+    
+
     e.preventDefault();
     myChart.classList.remove('none');
     myChart.classList.add('visible');
@@ -75,8 +77,10 @@ artista.addEventListener('submit',async (e)=> {
     const whiteSpaces = /  +/g;
     const artist = input.value.trim().replace(whiteSpaces,'+');
     tracks = await getArtistTopTracks(artist);
+    
     labels = tracks.map(track => track.name);
     data = tracks.map(track => track.popularity);
+   
     addData(chart,labels,data)
     chart.update();
     createArtistCard(artist).then();

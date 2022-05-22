@@ -13,26 +13,28 @@ const fetchApi = async() => {
         body : 'grant_type=client_credentials'
     });
     const data = await result.json();
-    console.log(data)
+    
     return data.access_token
 }
 
 const getArtistId = async (name) => {
     const token = await fetchApi();
-    console.log(token)
+    
     const result = await fetch(`https://api.spotify.com/v1/search?q=${name}tk&type=artist`,{
         method:'GET',
         headers:{'Authorization': 'Bearer ' + token}
-        })
+    });
+    
+    
     const {artists} = await result.json();
-    console.log(artists)
-    return artists.items[0].id;
+    
+    return artists?.items[0]?.id;
 }
         
 
 export const getArtistTopTracks = async(name) => {
     const token = await fetchApi();
-    console.log(token)
+    
     const artistId = await getArtistId(name);
     const result = await fetch(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`,{
         method:'GET',
@@ -46,6 +48,7 @@ export const getArtistTopTracks = async(name) => {
             popularity: track.popularity
         }
     })
+    
     return topTracks;
 }
 
@@ -64,8 +67,7 @@ export const getArtistInfo = async (name) => {
         followers: response.followers.total,
         externalUrl:response.external_urls.spotify
     }
-    console.log(response)
-    console.log(info)
+   
     return info;
     
 }
